@@ -1,8 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a8n-da-Ag0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Trivia View Controller-->
+        <scene sceneID="ZRV-TZ-KU2">
+            <objects>
+                <viewController id="a8n-da-Ag0" customClass="TriviaViewController" customModule="Trivia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NEu-Ue-Lia">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BJJ-kg-Gnd">
+                                <rect key="frame" x="143.33333333333334" y="83" width="106.66666666666666" height="20.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz7-BP-YW6">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray6Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-cK-Ga6">
+                                        <rect key="frame" x="81.333333333333314" y="0.0" width="25.333333333333329" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray6Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ubi-cK-Ga6" firstAttribute="leading" secondItem="Wz7-BP-YW6" secondAttribute="trailing" constant="8" id="8Yc-zH-NMQ"/>
+                                    <constraint firstItem="Ubi-cK-Ga6" firstAttribute="centerY" secondItem="Wz7-BP-YW6" secondAttribute="centerY" id="vax-LO-rOw"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uin-dJ-5Sy">
+                                <rect key="frame" x="16" y="127.33333333333334" width="361" height="464.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02p-KW-qKG">
+                                        <rect key="frame" x="145.33333333333334" y="0.0" width="70.333333333333343" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray6Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUj-ga-UdW">
+                                        <rect key="frame" x="8" y="37.333333333333314" width="345" height="250"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="wRN-Dj-OHg"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Question will be here">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="24"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0">
+                                                        <lineBreakStrategy key="lineBreakStrategy" pushOut="YES"/>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8zY-LN-wC6" userLabel="Answer Button0">
+                                        <rect key="frame" x="24" y="304.33333333333337" width="313" height="27.333333333333314"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Answer 1">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="smallSystem"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0">
+                                                            <lineBreakStrategy key="lineBreakStrategy" pushOut="YES"/>
+                                                        </paragraphStyle>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.73725490196078436" green="0.61960784313725492" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="ansewerButtonPressed:" destination="a8n-da-Ag0" eventType="touchUpInside" id="wmI-2X-xpG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rZo-Vh-Qaa" userLabel="Answer Button1">
+                                        <rect key="frame" x="24" y="348.66666666666669" width="313" height="27.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Answer 2">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="smallSystem"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0">
+                                                            <lineBreakStrategy key="lineBreakStrategy" pushOut="YES"/>
+                                                        </paragraphStyle>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.73725490199999999" green="0.61960784310000006" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="ansewerButtonPressed:" destination="a8n-da-Ag0" eventType="touchUpInside" id="KgX-v5-ZXk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FHz-jP-ICb" userLabel="Answer Button2">
+                                        <rect key="frame" x="24" y="393.00000000000006" width="313" height="27.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Answer 3">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="smallSystem"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0">
+                                                            <lineBreakStrategy key="lineBreakStrategy" pushOut="YES"/>
+                                                        </paragraphStyle>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.73725490199999999" green="0.61960784310000006" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="ansewerButtonPressed:" destination="a8n-da-Ag0" eventType="touchUpInside" id="48e-yD-2At"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="219-bF-PiW" userLabel="Answer Button3">
+                                        <rect key="frame" x="24" y="437.33333333333331" width="313" height="27.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Answer 4">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="smallSystem"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0">
+                                                            <lineBreakStrategy key="lineBreakStrategy" pushOut="YES"/>
+                                                        </paragraphStyle>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.73725490199999999" green="0.61960784310000006" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="ansewerButtonPressed:" destination="a8n-da-Ag0" eventType="touchUpInside" id="MtI-cj-J9e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FHz-jP-ICb" firstAttribute="leading" secondItem="Uin-dJ-5Sy" secondAttribute="leading" constant="24" id="8bJ-zV-Pze"/>
+                                    <constraint firstAttribute="trailing" secondItem="FUj-ga-UdW" secondAttribute="trailing" constant="8" id="DYK-na-6Vb"/>
+                                    <constraint firstItem="FUj-ga-UdW" firstAttribute="leading" secondItem="Uin-dJ-5Sy" secondAttribute="leading" constant="8" id="GJd-J4-nWJ"/>
+                                    <constraint firstItem="8zY-LN-wC6" firstAttribute="leading" secondItem="Uin-dJ-5Sy" secondAttribute="leading" constant="24" id="Kvh-6q-Nlt"/>
+                                    <constraint firstAttribute="trailing" secondItem="FHz-jP-ICb" secondAttribute="trailing" constant="24" id="KwA-rx-JZM"/>
+                                    <constraint firstItem="219-bF-PiW" firstAttribute="leading" secondItem="Uin-dJ-5Sy" secondAttribute="leading" constant="24" id="NeR-Sl-p23"/>
+                                    <constraint firstAttribute="trailing" secondItem="219-bF-PiW" secondAttribute="trailing" constant="24" id="SuC-wc-VbU"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZo-Vh-Qaa" secondAttribute="trailing" constant="24" id="TbR-pm-U8Z"/>
+                                    <constraint firstItem="FHz-jP-ICb" firstAttribute="top" secondItem="rZo-Vh-Qaa" secondAttribute="bottom" constant="17.000000000000057" id="Tsj-EC-JNv" userLabel="Lying is The Most Fun A Girl Can Have Without Taking Her Clothes Off.top = Nails for Breakfast, Tacks for Snacks.bottom + 16"/>
+                                    <constraint firstItem="FUj-ga-UdW" firstAttribute="centerX" secondItem="Uin-dJ-5Sy" secondAttribute="centerX" id="XCP-WW-pXh"/>
+                                    <constraint firstAttribute="trailing" secondItem="8zY-LN-wC6" secondAttribute="trailing" constant="24" id="aQN-eO-4lm"/>
+                                    <constraint firstItem="rZo-Vh-Qaa" firstAttribute="top" secondItem="8zY-LN-wC6" secondAttribute="bottom" constant="17.000000000000057" id="eX0-5v-tLN" userLabel="Nails for Breakfast, Tacks for Snacks.top = Build God, Then We'll talk.bottom + 16"/>
+                                    <constraint firstItem="rZo-Vh-Qaa" firstAttribute="leading" secondItem="Uin-dJ-5Sy" secondAttribute="leading" constant="24" id="nc9-21-oEu"/>
+                                    <constraint firstItem="02p-KW-qKG" firstAttribute="centerX" secondItem="Uin-dJ-5Sy" secondAttribute="centerX" id="vkH-57-wab"/>
+                                    <constraint firstItem="219-bF-PiW" firstAttribute="top" secondItem="FHz-jP-ICb" secondAttribute="bottom" constant="16.999999999999886" id="wWG-xu-qbe" userLabel="I Write Sins Not Tragedies.top = Lying is The Most Fun A Girl Can Have Without Taking Her Clothes Off.bottom + 16"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4w2-xK-hsS"/>
+                        <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BJJ-kg-Gnd" firstAttribute="centerX" secondItem="NEu-Ue-Lia" secondAttribute="centerX" id="4tS-Fl-6Zu"/>
+                            <constraint firstItem="BJJ-kg-Gnd" firstAttribute="top" secondItem="4w2-xK-hsS" secondAttribute="top" constant="24" id="FTA-fL-83v"/>
+                            <constraint firstItem="Uin-dJ-5Sy" firstAttribute="leading" secondItem="NEu-Ue-Lia" secondAttribute="leading" constant="16" id="Izg-RJ-zPV"/>
+                            <constraint firstItem="4w2-xK-hsS" firstAttribute="trailing" secondItem="Uin-dJ-5Sy" secondAttribute="trailing" constant="16" id="L3b-zc-e37"/>
+                            <constraint firstItem="Uin-dJ-5Sy" firstAttribute="top" secondItem="BJJ-kg-Gnd" secondAttribute="bottom" constant="24" id="M25-AE-64j"/>
+                            <constraint firstItem="Uin-dJ-5Sy" firstAttribute="centerX" secondItem="NEu-Ue-Lia" secondAttribute="centerX" id="RHC-Qn-oQ7"/>
+                            <constraint firstItem="Uin-dJ-5Sy" firstAttribute="centerX" secondItem="NEu-Ue-Lia" secondAttribute="centerX" id="SiH-30-le8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerButton0" destination="8zY-LN-wC6" id="RHx-h0-bqh"/>
+                        <outlet property="answerButton1" destination="rZo-Vh-Qaa" id="rgM-6a-Lqv"/>
+                        <outlet property="answerButton2" destination="FHz-jP-ICb" id="8P0-uL-ngg"/>
+                        <outlet property="answerButton3" destination="219-bF-PiW" id="oZ2-Rr-4yc"/>
+                        <outlet property="questionCategory" destination="02p-KW-qKG" id="8Wj-Pl-oLK"/>
+                        <outlet property="questionField" destination="FUj-ga-UdW" id="1tx-7A-EKx"/>
+                        <outlet property="questionNumberLabel" destination="Ubi-cK-Ga6" id="vlG-5i-yaT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lF1-kA-rMZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57.251908396946561" y="-28.169014084507044"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
