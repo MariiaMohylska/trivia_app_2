@@ -8,7 +8,7 @@
 import UIKit
 
 class TriviaViewController: UIViewController {
-    let triviaQuestions : TriviaQuestions = TriviaQuestions()
+    var triviaQuestions : TriviaQuestions!
     
     @IBOutlet weak var questionField: UILabel!
     
@@ -16,15 +16,24 @@ class TriviaViewController: UIViewController {
     @IBOutlet weak var answerButton1: UIButton!
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
-    
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionCategory: UILabel!
+    
+    var settings: TrivisSettings = TrivisSettings()
+    
     var questionNumber: Int = 0;
     var score: Int = 0;
     
     override func viewDidLoad() {
-        nextQuestion()
+        fetchQuestions()
         super.viewDidLoad()
+    }
+    
+    func fetchQuestions(){
+            TriviaQuestionsService.fetchQuestions(questionsAmount: settings.questionsAmount, category: settings.category?.rawValue, difficulty: settings.difficulty) { triviaQuestions in
+            self.triviaQuestions = triviaQuestions
+            self.nextQuestion()
+        }
     }
     
     func nextQuestion() {
@@ -32,41 +41,88 @@ class TriviaViewController: UIViewController {
             gameOverAlert()
             return
         }
-        
-        questionField.text = triviaQuestions.questions[questionNumber]
+        let question = triviaQuestions.questions[questionNumber]
+        questionField.text = question.question
         
         questionNumberLabel.text = "\(questionNumber + 1)/\(triviaQuestions.questions.count)"
-        questionCategory.text = triviaQuestions.questionCategoryies[questionNumber]
+        questionCategory.text = question.category
         
-        answerButton0.setTitle(triviaQuestions.answers[questionNumber][0], for: UIControl.State.normal)
-        answerButton1.setTitle(triviaQuestions.answers[questionNumber][1], for: UIControl.State.normal)
-        answerButton2.setTitle(triviaQuestions.answers[questionNumber][2], for: UIControl.State.normal)
-        answerButton3.setTitle(triviaQuestions.answers[questionNumber][3], for: UIControl.State.normal)
+        let answers = question.answers
+        
+        switch question.type{
+        case .boolean: booleanAnswers(answers)
+        case .multiple: multipleAnswers(answers)
+        }
+        
     }
-
-    @IBAction func ansewerButtonPressed(_ sender: UIButton) {
+    
+    func multipleAnswers(_ answers: [String]){
+        answerButton0.setTitle(answers[0], for: UIControl.State.normal)
+        answerButton1.setTitle(answers[1], for: UIControl.State.normal)
+        answerButton2.setTitle(answers[2], for: UIControl.State.normal)
+        answerButton3.setTitle(answers[3], for: UIControl.State.normal)
+        answerButton2.isHidden = false
+        answerButton3.isHidden = false
+    }
+    
+    func booleanAnswers(_ answers: [String]){
+        answerButton0.setTitle(answers[0], for: UIControl.State.normal)
+        answerButton1.setTitle(answers[1], for: UIControl.State.normal)
+        answerButton2.isHidden = true
+        answerButton3.isHidden = true
+    }
+    
+    @IBAction func answerButtonPressed(_ sender: UIButton) {
         checkAnswer(answer: sender.currentTitle)
         questionNumber+=1
-        nextQuestion()
     }
     
     func checkAnswer(answer: String? = ""){
-        if answer == triviaQuestions.correctAnswers[questionNumber] {
+        if answer == triviaQuestions.questions[questionNumber].correctAnswer {
             score += 1
+            correctAnswer()
+        } else {
+            incorrectAnswer()
         }
     }
     
     
-    func resetAction(_ action: UIAlertAction) {
-        score = 0
-        questionNumber = 0
-        nextQuestion()
-    }
-    
     func gameOverAlert() {
         let alert = UIAlertController(title: kGameOver, message: "\(kFinalScore) \(score)/\(triviaQuestions.questions.count)", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: kRestart, style: .default, handler: resetAction))
+        let restartAction = {
+            (_ action: UIAlertAction) in
+            self.score = 0
+            self.questionNumber = 0
+            self.nextQuestion()
+        }
+        
+        let resetAction = { (_ action: UIAlertAction) in
+            self.score = 0
+            self.questionNumber = 0
+            self.fetchQuestions()
+        }
+        
+        alert.addAction(UIAlertAction(title: kRestart, style: .default, handler: restartAction))
+        alert.addAction(UIAlertAction(title: kReset, style: .default, handler: resetAction))
         present(alert, animated: true)
+    }
+    
+    
+    
+    func correctAnswer() {
+        let alert = UIAlertController(title: kCongradulation, message: kAddPoint, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: kNext, style: .default, handler: nextQuestionHandler))
+        present(alert, animated: true)
+    }
+    
+    func incorrectAnswer() {
+        let alert = UIAlertController(title: kIncorrectAnswerTitle, message: kIncorrectAnswerMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: kNext, style: .default, handler: nextQuestionHandler))
+        present(alert, animated: true)
+    }
+    
+    func nextQuestionHandler(_ action: UIAlertAction){
+        nextQuestion()
     }
 }
