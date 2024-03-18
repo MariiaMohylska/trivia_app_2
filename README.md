@@ -26,7 +26,7 @@ The following **optional** features are implemented:
 
 ## Video Walkthrough
 
-[Demo]](https://youtu.be/tpEU3DbcmDM)
+[Demo](https://youtu.be/tpEU3DbcmDM)
 
 
 ## License
