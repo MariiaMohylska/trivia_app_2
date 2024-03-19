@@ -98,8 +98,6 @@ class TriviaViewController: UIViewController {
         }
         
         let doneQuiz = { (_ action: UIAlertAction) in
-//            self.score = 0
-//            self.questionNumber = 0
             self.navigationController?.popViewController(animated: true)
             return
         }
