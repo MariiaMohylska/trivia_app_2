@@ -94,17 +94,18 @@ class TriviaViewController: UIViewController {
             (_ action: UIAlertAction) in
             self.score = 0
             self.questionNumber = 0
-            self.nextQuestion()
-        }
-        
-        let resetAction = { (_ action: UIAlertAction) in
-            self.score = 0
-            self.questionNumber = 0
             self.fetchQuestions()
         }
         
+        let doneQuiz = { (_ action: UIAlertAction) in
+//            self.score = 0
+//            self.questionNumber = 0
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
+        
         alert.addAction(UIAlertAction(title: kRestart, style: .default, handler: restartAction))
-        alert.addAction(UIAlertAction(title: kReset, style: .default, handler: resetAction))
+        alert.addAction(UIAlertAction(title: kOk, style: .default, handler: doneQuiz))
         present(alert, animated: true)
     }
     
