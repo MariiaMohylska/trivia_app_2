@@ -9,8 +9,8 @@ import Foundation
 
 let kGameOver = "Game over!"
 let kFinalScore = "Final score = "
-let kRestart = "Restart"
-let kReset = "Reset"
+let kRestart = "Try Again"
+let kOk = "Ok"
 let kCongradulation = "Congratulation!"
 let kAddPoint = "Asnwer is correct!\n +1 point to your score"
 let kIncorrectAnswerTitle = "Ooooops! You chose wrong one!"
